@@ -1,55 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.edugram.controllers.Auth">
-   <left>
-      <AnchorPane prefWidth="228.0" style="-fx-background-color: #3A1078;" BorderPane.alignment="CENTER">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.edugram.controllers.LoginController">
+   <children>
+      <ImageView fx:id="image_login_bg" fitHeight="645.0" fitWidth="844.0" opacity="0.36" pickOnBounds="true">
+         <image>
+            <Image url="@Image/login_backg.jpg" />
+         </image>
+      </ImageView>
+      <VBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="818.0" StackPane.alignment="CENTER">
          <children>
-            <Label layoutX="-138.0" layoutY="154.0" rotate="-90.0" text="EDUGRAM" textFill="WHITE">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="EduGram" textAlignment="CENTER">
                <font>
-                  <Font size="70.0" />
+                  <Font name="System Bold" size="27.0" />
                </font>
+               <VBox.margin>
+                  <Insets bottom="35.0" top="29.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Log-In">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+            <Label text="Masukan Email anda">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin></Label>
+            <ImageView fitHeight="59.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Image/pfp_placeholder.jpg" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="62.0" styleClass="Email-label" stylesheets="@css_login.css" text="Email">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets right="222.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="-3.0" left="4.0" right="4.0" />
+               </padding>
+            </Label>
+            <HBox maxHeight="72.0" prefHeight="100.0" prefWidth="800.0" styleClass="email_Hbox-Textfield" stylesheets="@css_login.css">
+               <children>
+                  <TextField prefHeight="26.0" prefWidth="308.0" styleClass="no-shadow" stylesheets="@css_login.css" text="email@domain.com" />
+               </children>
+               <VBox.margin>
+                  <Insets left="-6.0" />
+               </VBox.margin>
+            </HBox>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="28.0" prefWidth="96.0" styleClass="Email-label" stylesheets="@css_login.css" text="Password">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="1.0" left="4.0" right="4.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets right="190.0" top="20.0" />
+               </VBox.margin>
+            </Label>
+            <HBox maxHeight="72.0" prefHeight="100.0" prefWidth="800.0" styleClass="email_Hbox-Textfield" stylesheets="@css_login.css">
+               <children>
+                  <PasswordField prefHeight="26.0" prefWidth="308.0" />
+               </children>
+               <VBox.margin>
+                  <Insets right="5.0" />
+               </VBox.margin>
+            </HBox>
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="278.0" styleClass="login-button" stylesheets="@css_login.css" text="Login">
+               <VBox.margin>
+                  <Insets right="5.0" top="16.0" />
+               </VBox.margin>
+            </Button>
+            <Label text="or continue with">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="13.0" />
+               </VBox.margin>
             </Label>
          </children>
-      </AnchorPane>
-   </left>
-   <right>
-      <AnchorPane prefHeight="200.0" prefWidth="370.0" style="-fx-background-color: #F7F7F8;" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="130.0" layoutY="61.0" text="LOGIN">
-               <font>
-                  <Font name="System Bold" size="31.0" />
-               </font>
-            </Label>
-            <Label layoutX="20.0" layoutY="124.0" text="Username">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <TextField fx:id="usernameInp" layoutX="118.0" layoutY="122.0" promptText="Username" />
-            <Label layoutX="20.0" layoutY="178.0" text="Password">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <TextField fx:id="passInp" layoutX="118.0" layoutY="176.0" promptText="Password" />
-            <Button fx:id="loginBtn" layoutX="51.0" layoutY="269.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="24.0" prefWidth="268.0" style="-fx-background-color: #7C43EF;" text="LOGIN !" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Button>
-            <Button fx:id="gotoRegis" layoutX="51.0" layoutY="332.0" mnemonicParsing="false" onAction="#gotoRegis" prefHeight="24.0" prefWidth="268.0" style="-fx-background-color: #7C43EF;" text="Go to regis" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
-   </right>
-</BorderPane>
+      </VBox>
+   </children>
+</StackPane>

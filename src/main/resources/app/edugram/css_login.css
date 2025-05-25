@@ -1,0 +1,22 @@
+.Email-label {
+-fx-background-color: #b9d8ff;
+-fx-background-radius: 4px;
+
+}
+
+.email_Hbox-Textfield {
+-fx-pref-width: 400px;
+-fx-pref-height: 20px;
+
+-fx-max-width:280px;
+-fx-max-height:25px;
+}
+
+.no-shadow {
+-fx-effect: none;
+}
+
+.login-button {
+-fx-background-color: black;
+-fx-text-fill: white;
+}
