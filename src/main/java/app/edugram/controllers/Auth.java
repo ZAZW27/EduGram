@@ -64,4 +64,5 @@ public class Auth {
     public void gotoLogin(ActionEvent event){
         PageAction.switchPage(event, "login.fxml");
     }
+//    mungkin gini kah
 }
