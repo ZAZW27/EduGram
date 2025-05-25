@@ -49,6 +49,7 @@ public class Auth {
         boolean isValid = UserModel.ValidateRegistration(username, password, nama, email);
         if(isValid){
             System.out.println("Seleamat anda telah terregister ahahhahahahahhahahahah");
+            PageAction.switchPage(event, "login.fxml");
         }else{
             System.out.println("wow ga berhasil");
         }

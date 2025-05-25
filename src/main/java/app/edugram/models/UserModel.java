@@ -102,10 +102,11 @@ public class UserModel extends BaseModel implements CRUDable<UserModel> {
     }
 
     public static boolean ValidateRegistration(String usernameVal, String passwordVal, String nama, String email) {
-        return !(usernameVal == null || usernameVal.isEmpty()
-                || passwordVal == null || passwordVal.isEmpty()
-                || nama == null || nama.isEmpty()
-                || email == null || email.isEmpty());
+        boolean isValid = ValidateUser(usernameVal, passwordVal, false);
+        if(!isValid){
+            return true;
+        }
+        return false;
     }
 
 //    ========================================
