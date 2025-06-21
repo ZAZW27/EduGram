@@ -1,5 +1,6 @@
 package app.edugram.controllers;
 
+import app.edugram.controllers.Components.PostFrameController;
 import app.edugram.controllers.Components.SidebarController;
 import app.edugram.controllers.Components.TopbarController;
 import javafx.fxml.FXML;
@@ -31,6 +32,7 @@ public class BaseViewController implements Initializable{
             sidebarController.setMainBorderPane(mainBorderPane);
         }
         topbarController.setMainBorderPane(mainBorderPane);
+        PostFrameController.setMainBorderPane(mainBorderPane);
         loadPage("beranda");
     }
 

@@ -55,15 +55,15 @@
                 </StackPane>
 
                 <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                <ImageView fx:id="profileImageView" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true">
-                    <image>
-                        <Image url="@../../assets/Image/Icons/pfp_placeholder.jpg" />
-                    </image>
-                    <HBox.margin>
-                        <Insets right="31.0" />
-                    </HBox.margin>
-                </ImageView>
-                <Button fx:id="usernameButton" mnemonicParsing="false" onAction="#onUsernameButtonClick" prefHeight="28.0" prefWidth="166.0" styleClass="username_button" stylesheets="@../../assets/css/topbar.css" text="Username" />
+<!--                <ImageView fx:id="profileImageView" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true">-->
+<!--                    <image>-->
+<!--                        <Image url="@../../assets/Image/Icons/pfp_placeholder.jpg" />-->
+<!--                    </image>-->
+<!--                    <HBox.margin>-->
+<!--                        <Insets right="31.0" />-->
+<!--                    </HBox.margin>-->
+<!--                </ImageView>-->
+<!--                <Button fx:id="usernameButton" mnemonicParsing="false" onAction="#onUsernameButtonClick" prefHeight="28.0" prefWidth="166.0" styleClass="username_button" stylesheets="@../../assets/css/topbar.css" text="Username" />-->
             </children>
         </HBox>
     </children>

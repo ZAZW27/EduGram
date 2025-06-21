@@ -17,18 +17,42 @@ public class UserPrefTagModel extends BaseModel implements Toggleable{
 
     @Override
     public boolean set(List<String> dbValue) {
-        return false;
+        String query = "INSERT INTO userPrefTag (id_user, id_tag) VALUES (";
+        return Toggleable.LoopValues(dbValue, query);
     }
 
     @Override
     public boolean unset(int tableId) {
-        return false;
+        String sql = "DELETE FROM userPrefTag WHERE id_tag = " + tableId + " AND id_user = " + Sessions.getUserId();
+
+        return ConnectDB.startQueryExecution(sql, true);
     }
 
     @Override
     public boolean exists(int tableId) {
-        return false;
+        String query = "SELECT * FROM userPrefTag WHERE id_tag = " + tableId + " AND id_user = " + Sessions.getUserId();
+        return ConnectDB.startQueryExecution(query, false);
     }
+    public static String getTagId(String tagNama) {
+        String sql = "SELECT id_tag FROM tag WHERE nama_tag = ?";
+        ConnectDB db = new ConnectDB();
+
+        try (Connection con = db.getConnetion();
+            PreparedStatement stmt = con.prepareStatement(sql)
+        ) {
+            stmt.setString(1, tagNama);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("id_tag");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error getting tag id: " + e.getMessage());
+        }
+
+        return null; // tidak ditemukan
+    }
+
 
     public static List<String> listAll(){
         System.out.println("fetching usr pref tag  " + Sessions.getUserId());

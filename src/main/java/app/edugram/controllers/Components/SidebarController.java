@@ -2,9 +2,13 @@ package app.edugram.controllers.Components;
 
 import app.edugram.Main;
 import app.edugram.controllers.ExploreController;
+import app.edugram.models.PostModel;
+import app.edugram.models.UserModel;
 import app.edugram.utils.PageAction;
 import app.edugram.utils.Sessions;
 import app.edugram.utils.cookies.CookieUtil;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +31,8 @@ import javafx.stage.Modality;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class SidebarController implements Initializable {
@@ -48,6 +54,10 @@ public class SidebarController implements Initializable {
     @FXML private Button navLogout;
     @FXML private ImageView navLike;
     @FXML private ImageView navBookmarks;
+
+    @FXML private Label navFollowing;
+    @FXML private Label navFollowers;
+    @FXML private Label navPosts;
 
     @FXML private Label navUsername;
 
@@ -252,9 +262,13 @@ public class SidebarController implements Initializable {
         }
     }
 
+    private List<PostModel> allPostsToDisplay;
     // --- Method Helper ---
     private void setNavData() {
         if (navProfilePicture != null && Sessions.getProfilePicture() != null) {
+            Map<String, String> user = UserModel.findUser(String.valueOf(Sessions.getUserId()));
+            navFollowers.setText(user.get("follower"));
+            navFollowing.setText(user.get("following"));
             try {
                 Boolean please = Sessions.getLevel().equals("admin") ? true : false;
 //                System.out.println(please);

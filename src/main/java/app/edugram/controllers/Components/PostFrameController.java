@@ -1,10 +1,8 @@
 package app.edugram.controllers.Components;
 import app.edugram.Main;
+import app.edugram.controllers.ExploreController;
 import app.edugram.controllers.ProfileController;
-import app.edugram.models.DislikeModel;
-import app.edugram.models.LikeModel;
-import app.edugram.models.PostModel;
-import app.edugram.models.SaveModel;
+import app.edugram.models.*;
 import app.edugram.utils.PageAction;
 import app.edugram.utils.Sessions;
 import app.edugram.utils.PostClickHandler;
@@ -12,6 +10,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -88,6 +87,12 @@ public class PostFrameController {
         this.reportPageController = controller;
     }
 
+    private static BorderPane mainBorderPane;
+
+    public static void setMainBorderPane(BorderPane pane) {
+        mainBorderPane = pane;
+    }
+
     public void setData(PostModel postModel){
         this.currentPost = postModel;
 
@@ -136,8 +141,21 @@ public class PostFrameController {
                 String[] tag = tagName.split("-");
                 Button tagButton = new Button("#"+tag[0]);
                 tagButton.getStyleClass().addAll(tag[1].equals("a") ? "built_in_tag" : "user_made_tag", "tagButton");
+
                 tagButton.setOnAction(event -> {
-                    System.out.println("Tag Clicked: " + tagName);
+                    try {
+                        FXMLLoader loader = new FXMLLoader(PageAction.class.getResource("/app/edugram/pages/explore.fxml"));
+                        Parent root = loader.load();
+
+                        ExploreController explore = loader.getController();
+                        explore.setWhatPage("explore-" + tag[0]);
+
+                        // Set the content to the center of BorderPane
+                        mainBorderPane.setCenter(root);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 });
                 tagBox.getChildren().add(tagButton);
             }

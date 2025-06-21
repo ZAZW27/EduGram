@@ -147,19 +147,19 @@
                             </children>
                             <padding><Insets left="29.0" /></padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="250.0" styleClass="profile">
-                            <children>
-                                <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" smooth="true">
-                                    <image><Image url="@../../assets/Image/Icons/video-playlist-svgrepo-com.png" /></image>
-                                    <cursor><Cursor fx:constant="HAND" /></cursor>
-                                </ImageView>
-                                <Label fx:id="navPosts" alignment="CENTER" prefHeight="27.0" prefWidth="65.0" styleClass="text_color_white" text="666">
-                                    <font><Font name="System Bold" size="18.0" /></font>
-                                    <cursor><Cursor fx:constant="HAND" /></cursor>
-                                </Label>
-                            </children>
-                            <padding><Insets left="33.0" /></padding>
-                        </HBox>
+<!--                        <HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="250.0" styleClass="profile">-->
+<!--                            <children>-->
+<!--                                <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" smooth="true">-->
+<!--                                    <image><Image url="@../../assets/Image/Icons/video-playlist-svgrepo-com.png" /></image>-->
+<!--                                    <cursor><Cursor fx:constant="HAND" /></cursor>-->
+<!--                                </ImageView>-->
+<!--                                <Label fx:id="navPosts" alignment="CENTER" prefHeight="27.0" prefWidth="65.0" styleClass="text_color_white" text="666">-->
+<!--                                    <font><Font name="System Bold" size="18.0" /></font>-->
+<!--                                    <cursor><Cursor fx:constant="HAND" /></cursor>-->
+<!--                                </Label>-->
+<!--                            </children>-->
+<!--                            <padding><Insets left="33.0" /></padding>-->
+<!--                        </HBox>-->
                   <HBox alignment="TOP_CENTER" prefHeight="23.0" prefWidth="250.0" spacing="20.0">
                      <children>
                         <ImageView fx:id="navBookmarks" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#onBookmarksClick" pickOnBounds="true" preserveRatio="true" styleClass="profile">

@@ -3,13 +3,17 @@ import app.edugram.Main;
 import app.edugram.controllers.Components.PostFrameController;
 import app.edugram.controllers.Components.SmallPostFrameController;
 import app.edugram.models.PostModel;
+import app.edugram.models.UserPrefTagModel;
 import app.edugram.utils.PostClickHandler;
+import app.edugram.utils.Sessions;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Label;
 import javafx.scene.Node;
@@ -27,6 +31,7 @@ public class ExploreController extends BaseController implements Initializable, 
     @FXML private ScrollPane contentScrollPane;
     @FXML private VBox contentContainer;
     @FXML private HBox hbox_explore;
+    @FXML private Button tagFollow;
 
     private Node exploreGridView;
     private Node tulisanExplore;
@@ -264,10 +269,44 @@ public class ExploreController extends BaseController implements Initializable, 
         System.out.println("initData() called");
         PostModel post = new PostModel();
         List<PostModel> posts = post.listAll(whatPage);
+        tagFollow.setVisible(whatPage.startsWith("explore-"));
+
+        setFollowButton();
+
         System.out.println("initData() returning " + posts.size() + " posts");
         return posts;
     }
 
+    public void setFollowButton(){
+        String tagName = whatPage.split("-")[1];
+        int tagId = Integer.parseInt(UserPrefTagModel.getTagId(tagName));
+        UserPrefTagModel upt = new UserPrefTagModel();
+
+        tagFollow.setText(
+                (upt.exists(tagId) ? "Followed" : "Follow") +
+                        " #" +
+                        tagName);
+    }
+
+    @FXML
+    public void onFollowTag(ActionEvent event) {
+        String tagName = whatPage.split("-")[1];
+        String tagId = String.valueOf(UserPrefTagModel.getTagId(tagName));
+        List<String> value = List.of(
+                String.valueOf(Sessions.getUserId()),
+                tagId
+        );
+        UserPrefTagModel upt = new UserPrefTagModel();
+
+        if(upt.exists(Integer.parseInt(tagId))){
+            System.out.println("delete folow");
+            upt.unset(Integer.parseInt(tagId));
+        }else{
+            System.out.println("add folow");
+            upt.set(value);
+        }
+        setFollowButton();
+    }
 
     public void onPostClicked(PostModel post) {
         ShowPostDetail(post);
